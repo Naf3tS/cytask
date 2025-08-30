@@ -1,5 +1,5 @@
 
-// TODO: Replace with your actual Firebase project configuration
+// Firebase configuration
 const firebaseConfig = {"projectId":"cytask","appId":"1:19240282522:web:9958ed71c93782f53ef223","storageBucket":"cytask.firebasestorage.app","apiKey":"AIzaSyAbRAMOXeLdfE2ftPrJFcSgyp7QP3rV-Bo","authDomain":"cytask.firebaseapp.com","messagingSenderId":"19240282522","measurementId":"G-2171EDDE3N"};
 
 // Initialize Firebase
@@ -15,6 +15,7 @@ const mainContent = document.querySelector('main');
 const taskList = document.getElementById('task-list');
 const addTaskForm = document.getElementById('add-task-form');
 const taskInput = document.getElementById('task-input');
+const body = document.body;
 
 let tasksRef;
 let unsubscribe;
@@ -36,6 +37,7 @@ logoutButton.addEventListener('click', () => {
 auth.onAuthStateChanged(user => {
   if (user) {
     // User is signed in.
+    body.classList.remove('logged-out');
     loginButton.style.display = 'none';
     logoutButton.style.display = 'block';
     mainContent.style.display = 'block';
@@ -88,6 +90,7 @@ auth.onAuthStateChanged(user => {
 
   } else {
     // User is signed out.
+    body.classList.add('logged-out');
     loginButton.style.display = 'block';
     logoutButton.style.display = 'none';
     mainContent.style.display = 'none';

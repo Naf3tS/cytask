@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-    --primary-color: #1a1a1a;
-    --secondary-color: #2a2a2a;
-    --accent-color: #00aaff;
-    --text-color: #f0f0f0;
-    --danger-color: #ff4757;
-    --shadow-color: rgba(0, 170, 255, 0.5);
+    --primary-color: #ffffff;
+    --secondary-color: #f0f2f5;
+    --accent-color: #007bff;
+    --text-color: #333333;
+    --danger-color: #dc3545;
+    --shadow-color: rgba(0, 123, 255, 0.25);
     --noise-url: url('data:image/svg+xml,%3Csvg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
 }
 
@@ -19,11 +19,17 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: var(--text-color);
     line-height: 1.6;
     position: relative;
     overflow-x: hidden;
+    transition: background 0.5s ease-in-out;
+}
+
+body.logged-out {
+    background: url('dragon.webp') no-repeat center center fixed;
+    background-size: cover;
 }
 
 body::before {
@@ -43,9 +49,16 @@ body::before {
     max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+body.logged-out #app {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
 }
 
 header {
@@ -53,7 +66,7 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #e0e0e0;
     padding-bottom: 1rem;
 }
 
@@ -72,7 +85,7 @@ button {
     transition: all 0.3s ease;
     background-color: var(--accent-color);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 button:hover, button:focus {
@@ -86,7 +99,7 @@ button:hover, button:focus {
 }
 
 #logout-button:hover, #logout-button:focus {
-     box-shadow: 0 6px 20px rgba(255, 71, 87, 0.5);
+     box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
 }
 
 main {
@@ -103,7 +116,7 @@ main {
     flex-grow: 1;
     padding: 0.7rem;
     font-size: 1rem;
-    border: 1px solid transparent;
+    border: 1px solid #ced4da;
     border-radius: 8px;
     background-color: var(--primary-color);
     color: var(--text-color);
@@ -113,7 +126,7 @@ main {
 #task-input:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 15px var(--shadow-color);
+    box-shadow: 0 0 0 0.2rem var(--shadow-color);
 }
 
 #task-list {
@@ -125,15 +138,15 @@ main {
     align-items: center;
     padding: 1rem;
     margin-bottom: 0.5rem;
-    background-color: var(--primary-color);
+    background-color: #f8f9fa;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 #task-list li:hover {
-    background-color: #333;
+    background-color: #e9ecef;
     transform: translateY(-2px);
 }
 
@@ -152,7 +165,7 @@ main {
 
 #task-list li button:hover, #task-list li button:focus {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
 }
 
 @media (max-width: 768px) {
