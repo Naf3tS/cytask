@@ -9,6 +9,12 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 const provider = new firebase.auth.GoogleAuthProvider();
 
+// --- START: Added for email restriction ---
+// List of allowed email addresses. 
+// IMPORTANT: Replace these with the actual email addresses you want to allow.
+const allowedEmails = ['stefandel@gmail.com', 'trevornell@gmail.com'];
+// --- END: Added for email restriction ---
+
 const loginButton = document.getElementById('login-button');
 const logoutButton = document.getElementById('logout-button');
 const mainContent = document.querySelector('main');
@@ -36,6 +42,14 @@ logoutButton.addEventListener('click', () => {
 // Auth state listener
 auth.onAuthStateChanged(user => {
   if (user) {
+    // --- START: Added for email restriction ---
+    if (!allowedEmails.includes(user.email)) {
+      alert("You are not authorized to access this application.");
+      auth.signOut();
+      return;
+    }
+    // --- END: Added for email restriction ---
+
     // User is signed in.
     body.classList.remove('logged-out');
     loginButton.style.display = 'none';
