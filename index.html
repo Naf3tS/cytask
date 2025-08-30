@@ -1,14 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link href="/style.css" rel="stylesheet" />
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div id="app">
+        <header>
+            <h1>Task Manager</h1>
+            <div id="auth-container">
+                <button id="login-button">Sign in with Google</button>
+                <button id="logout-button" style="display: none;">Sign Out</button>
+            </div>
+        </header>
+        <main style="display: none;">
+            <div id="task-container">
+                <h2>My Tasks</h2>
+                <form id="add-task-form">
+                    <input type="text" id="task-input" placeholder="Add a new task" required />
+                    <button type="submit">Add Task</button>
+                </form>
+                <ul id="task-list"></ul>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script defer type="module" src="/main.js"></script>
 </body>
 </html>
