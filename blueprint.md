@@ -19,6 +19,7 @@ The application has a clean and modern design with a light theme. Key features i
 *   **Typography:** The application uses the Poppins font, which is clean and easy to read.
 *   **Layout:** The layout is responsive and works well on both desktop and mobile devices.
 *   **Icons:** The application uses icons to enhance the user experience.
+*   **Glassmorphism Start Page:** The start page for logged-out users features a "glassmorphism" effect, with a semi-transparent, blurred backdrop for the header, making the login button and title stand out against the background image.
 
 ## Deployment
 
@@ -37,3 +38,4 @@ The code is version controlled using Git and is hosted on GitHub at [https://git
 *   Push the code to a GitHub repository.
 *   Change the application to use a light-theme.
 *   Add a dynamic start page with a fire-breathing dragon background (using `dragon.webp`).
+*   Improve the start page design to make the login button more visible.

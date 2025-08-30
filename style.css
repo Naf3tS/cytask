@@ -56,9 +56,10 @@ body::before {
 }
 
 body.logged-out #app {
-    opacity: 0;
-    transform: scale(0.95);
-    pointer-events: none;
+    background-color: transparent;
+    box-shadow: none;
+    max-width: 100%;
+    padding: 0;
 }
 
 header {
@@ -70,9 +71,28 @@ header {
     padding-bottom: 1rem;
 }
 
+body.logged-out header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: none;
+    padding: 2rem;
+    margin: 0;
+}
+
 header h1 {
     font-size: 2.5rem;
     font-weight: 600;
+}
+
+body.logged-out h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    margin-bottom: 2rem;
 }
 
 button {
@@ -104,6 +124,10 @@ button:hover, button:focus {
 
 main {
     margin-top: 1rem;
+}
+
+body.logged-out main {
+    display: none;
 }
 
 #add-task-form {
