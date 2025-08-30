@@ -22,9 +22,26 @@ const taskList = document.getElementById('task-list');
 const addTaskForm = document.getElementById('add-task-form');
 const taskInput = document.getElementById('task-input');
 const body = document.body;
+const versionSpan = document.getElementById('version');
 
 let tasksRef;
 let unsubscribe;
+
+// --- START: Version Number ---
+// Function to fetch and display the version
+async function displayVersion() {
+  try {
+    const response = await fetch('version.json');
+    const data = await response.json();
+    versionSpan.textContent = data.version;
+  } catch (error) {
+    console.error('Error fetching version:', error);
+    versionSpan.textContent = 'N/A';
+  }
+}
+
+displayVersion();
+// --- END: Version Number ---
 
 // Sign in with Google
 loginButton.addEventListener('click', () => {
